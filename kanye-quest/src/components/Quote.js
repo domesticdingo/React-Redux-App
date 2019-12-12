@@ -1,20 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner';
-
+import kanye from '../media/kanye.png';
 import { getQuote } from '../actions';
+import styled from 'styled-components';
+
+let Main = styled.div`
+background-color: white;
+border: 1px solid white;
+border-radius: 20px;
+margin-top: 25%;
+height: auto;
+width: auto;
+padding: 100px;
+opacity: 80%;
+text-align: center;
+`
 
 const Quote = props => {
     return (
-        <div>
+        <Main>
             <h1>We're going on a Kanye Quest</h1>
             {!props.quote && !props.isFetching && <p>Hit the button for Kanye's best!</p>}
             {props.isFetching && (
-                <Loader type="Bars" color="#66CDAA" height={80} width={80} />
+                <img src={kanye} alt="Kanye West spinning" className="spinner" />
             )}
             {props.quote && <p>{props.quote.quote}</p>}
             <button onClick={props.getQuote}>West</button>
-        </div>
+        </Main>
     )
 }
 
